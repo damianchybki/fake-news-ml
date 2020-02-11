@@ -12,7 +12,7 @@ class FakeNews:
         self.y_train = y_train
         self.y_test = y_test
 
-    def createModel(self):
+    def predictFakeNews(self):
 
         tfidf_vectorizer = TfidfVectorizer(stop_words = 'english', lowercase = True, strip_accents = 'unicode')
 
@@ -25,6 +25,7 @@ class FakeNews:
         y_pred = pa_classifier.predict(tfidf_test)
 
         correctValues, predictedValues = confusion_matrix(self.y_test, y_pred, labels=['FAKE','REAL'])
+
         correctFakeCount = correctValues[0]
         correctRealCount = correctValues[1]
         predictedFakeCount = predictedValues[1]
